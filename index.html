@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>to-do web</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Background -->
+  <div class="bg"></div>
+
+  <!-- Main App Card -->
+  <main class="app-card">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="brand">
+        <span class="logo">✅</span>
+        <h1> Tasks</h1>
+      </div>
+
+      <nav class="stats">
+        <div class="stat">
+          <span class="stat-label">🔥 Streak</span>
+          <span id="streakCount" class="stat-value">0</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">✔ Completed</span>
+          <span id="completedCount" class="stat-value">0</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">🏅 Badge</span>
+          <span id="badgeLabel" class="stat-value">—</span>
+        </div>
+      </nav>
+
+      
+      <div class="progress-bar">
+        <div id="progressFill" class="progress-fill"></div>
+      </div>
+
+      
+      <button id="themeToggle" class="theme-toggle">🌙</button>
+    </header>
+
+    <section class="controls">
+      <form id="addForm" class="add-form">
+        <input 
+          type="text" 
+          id="taskTitle" 
+          placeholder="✨ Add a new task..." 
+          maxlength="120" 
+          aria-label="Task title"
+        />
+
+        
+        <div class="datetime-picker">
+          <span class="icon">📅</span>
+          <input type="date" id="taskDate" aria-label="Task due date" />
+          <span class="icon">⏰</span>
+          <input type="time" id="taskTime" aria-label="Task due time" />
+        </div>
+
+        <button type="submit" class="btn primary">+ Add</button>
+      </form>
+
+      <div class="quick-add">
+        <button data-quick="today" class="chip">Today</button>
+        <button data-quick="tomorrow" class="chip">Tomorrow</button>
+      </div>
+
+      <div class="sub-controls">
+        <div class="filter-group">
+          <button id="showAll" class="chip active">All</button>
+          <button id="showActive" class="chip">Active</button>
+          <button id="showCompleted" class="chip">Completed</button>
+        </div>
+        <div class="sort-group">
+          <label for="sortSelect" class="sort-label">Sort:</label>
+          <select id="sortSelect" class="select">
+            <option value="created_desc">Newest</option>
+            <option value="created_asc">Oldest</option>
+            <option value="due_asc">Due first</option>
+            <option value="due_desc">Due last</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    
+    <section class="list-section">
+      <ul id="taskList" class="task-list"></ul>
+      <div id="emptyState" class="empty-state">
+        <div class="empty-art">❄️</div>
+        <p>No tasks yet. Let’s get productive!</p>
+      </div>
+    </section>
+  </main>
+
+ 
+  <div id="toastHost" class="toast-host"></div>
+
+  
+  <div id="editModal" class="modal hidden">
+    <div class="modal-content">
+      <h2>Edit Task ✏️</h2>
+      <form id="editForm">
+        <input type="text" id="editTitle" placeholder="Task title" maxlength="120" />
+        <div class="datetime-picker">
+          <span class="icon">📅</span>
+          <input type="date" id="editDate" />
+          <span class="icon">⏰</span>
+          <input type="time" id="editTime" />
+        </div>
+        <div class="modal-actions">
+          <button type="submit" class="btn primary">Save</button>
+          <button type="button" id="cancelEdit" class="btn">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
